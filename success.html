@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Успешно</title>
+</head>
+<body style="text-align: center; padding: 50px; background: #111; color: white;">
+  <h2>✅ Оплата прошла!</h2>
+  <p>Статус будет выдан после подтверждения администратором.</p>
+  <button onclick="window.close()">Закрыть вкладку</button>
+
+  <script>
+    // Получаем параметры из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const donate = urlParams.get('donate');
+    const nick = urlParams.get('nick');
+
+    if (donate && nick) {
+      // Сохраняем запрос на донат
+      const pending = JSON.parse(localStorage.getItem('pending-donations')) || [];
+      pending.push({ nick, type: donate, time: Date.now() });
+      localStorage.setItem('pending-donations', JSON.stringify(pending));
+
+      // Открываем главный чат (если хочешь)
+      // window.open('/index.html', '_blank');
+    } else {
+      console.warn("Нет данных о покупке");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💎 Поддержать проект</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      color: white;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #10a37f;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .plan {
+      background: #1e1e1e;
+      border-radius: 16px;
+      padding: 25px;
+      width: 220px;
+      text-align: center;
+      border: 1px solid #333;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan:hover {
+      transform: translateY(-5px);
+      border-color: #10a37f;
+      box-shadow: 0 10px 20px rgba(16, 163, 127, 0.1);
+    }
+
+    .plan::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background: #888;
+    }
+
+    .plan.afun::before {
+      background: linear-gradient(90deg, #0074D9, #7FDBFF);
+    }
+
+    .plan.vip::before {
+      background: linear-gradient(90deg, #FFDC00, #FF851B);
+    }
+
+    .plan.exclusive::before {
+      background: linear-gradient(90deg, #FFD700, #FF6F00);
+    }
+
+    .plan.admin::before {
+      background: linear-gradient(90deg, #ff4136, #85144b);
+    }
+
+    .plan h3 {
+      margin: 15px 0;
+      font-size: 1.4rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #10a37f;
+      margin: 10px 0;
+    }
+
+    .features {
+      list-style: none;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .features li {
+      margin: 8px 0;
+    }
+
+    .features li:before {
+      content: "✓";
+      color: #10a37f;
+      margin-right: 6px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background: #10a37f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0d8c6a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .note {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💎 Поддержать проект</h1>
+      <p>Помоги развитию чата — получи уникальный статус и привилегии</p>
+    </header>
+
+    <div class="plans">
+      <!-- Гость (бесплатно) -->
+      <div class="plan">
+        <h3>Гость</h3>
+        <div class="price">0 ₽</div>
+        <ul class="features">
+          <li>Базовый доступ</li>
+          <li>Стандартный ник</li>
+        </ul>
+        <button onclick="loginFirst()">Выбрать</button>
+      </div>
+
+      <!-- Afun -->
+      <div class="plan afun">
+        <h3>Afun</h3>
+        <div class="price">100 ₽</div>
+        <ul class="features">
+          <li>Синий ник</li>
+          <li>Свечение</li>
+          <li>Ранний доступ</li>
+        </ul>
+        <button onclick="pay('afun', 100)">Купить</button>
+      </div>
+
+      <!-- VIP -->
+      <div class="plan vip">
+        <h3>VIP</h3>
+        <div class="price">250 ₽</div>
+        <ul class="features">
+          <li>Жёлтый ник</li>
+          <li>Мерцание</li>
+          <li>Эмодзи в нике</li>
+          <li>Быстрая поддержка</li>
+        </ul>
+        <button onclick="pay('vip', 250)">Купить</button>
+      </div>
+
+      <!-- Эксклюзив -->
+      <div class="plan exclusive">
+        <h3>Эксклюзив</h3>
+        <div class="price">500 ₽</div>
+        <ul class="features">
+          <li>Золотой ник</li>
+          <li>Переливание</li>
+          <li>Уникальный значок</li>
+          <li>Имя в титрах</li>
+          <li>Голос в чате</li>
+        </ul>
+        <button onclick="pay('exclusive', 500)">Купить</button>
+      </div>
+
+      <!-- Админ (только по приглашению) -->
+      <div class="plan admin">
+        <h3>Админ</h3>
+        <div class="price">—</div>
+        <ul class="features">
+          <li>Красный ник</li>
+          <li>Оранжевое свечение</li>
+          <li>Полный доступ</li>
+          <li>Управление чатом</li>
+        </ul>
+        <button disabled>Недоступно</button>
+      </div>
+    </div>
+
+    <div class="note">
+      После оплаты вы будете перенаправлены обратно на сайт.<br>
+      Статус будет выдан после подтверждения в админ-панели.
+    </div>
+
+    <footer>
+      &copy; 2025 MyGPT. Все права защищены.
+    </footer>
+  </div>
+
+  <script>
+    // Получаем ник из localStorage
+    function getNick() {
+      const user = JSON.parse(localStorage.getItem('gpt-user'));
+      return user ? user.name : null;
+    }
+
+    // Проверка входа
+    function loginFirst() {
+      if (!getNick()) {
+        alert('Сначала войдите в чат!');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Оплата
+    function pay(type, amount) {
+      const nick = getNick();
+      if (!nick) {
+        alert('Сначала войдите в чат!');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Пример DonatePay ссылки (замените на свою)
+      const donateUrl = `https://donate.ac/start?project=your_project_id&amount=${amount}&custom_data=${nick}&success_url=${window.location.origin}/success.html`;
+
+      // Или тестовая ссылка (для разработки)
+      const testUrl = `success.html?donate=${type}&nick=${encodeURIComponent(nick)}`;
+
+      window.open(testUrl, '_blank'); // Замени на настоящий сервис
+    }
+  </script>
+</body>
+</html>

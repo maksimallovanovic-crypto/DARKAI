@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DARK AI — Умный чат</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Вкладки -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="chat">💬 Чат</button>
+    <button class="tab" data-tab="profile">👤 Профиль</button>
+    <button class="tab" data-tab="online">🟢 Онлайн</button>
+    <button class="tab" data-tab="donate">💎 Донат</button>
+    <div class="user-status-icon" title="Пользователи онлайн">
+      <i class="fas fa-users"></i> <span id="onlineCount">0</span>
+    </div>
+  </nav>
+
+  <!-- Экран входа -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-box">
+      <h2>🖤 DARK AI</h2>
+      <p>Умный чат с будущим</p>
+      <input type="text" id="usernameInput" placeholder="Ваш ник" maxlength="20" />
+      <button id="loginBtn">Войти</button>
+      <p><a href="donate.html" style="color:#10a37f">Получить привилегии</a></p>
+    </div>
+  </div>
+
+  <!-- Основной интерфейс -->
+  <div id="main-app" class="app" style="display: none;">
+    <main class="main">
+      <!-- Чат -->
+      <div id="chat" class="tab-content active">
+        <div class="chat" id="chatMessages">
+          <div class="message bot">Добро пожаловать в DARK AI, друг.</div>
+        </div>
+        <div class="input-area">
+          <textarea id="userInput" placeholder="Напишите сообщение..." rows="1"></textarea>
+          <button id="sendBtn">➤</button>
+        </div>
+        <div class="request-counter">
+          Запросы: <span id="requestsUsed">0</span> / <span id="requestsMax">50</span>
+        </div>
+      </div>
+
+      <!-- Профиль -->
+      <div id="profile" class="tab-content">
+        <div class="profile-card">
+          <div class="banner" id="profileBanner">🌐 Ваш баннер</div>
+          <div class="avatar" id="profileAvatar">👤</div>
+          <h2 id="profileName">Гость</h2>
+          <div class="status-tag" id="profileStatus">Гость</div>
+          <p>Запросов: <span id="profileRequests">50</span>/∞</p>
+          <button id="editProfileBtn">🎨 Редактировать</button>
+        </div>
+      </div>
+
+      <!-- Онлайн -->
+      <div id="online" class="tab-content">
+        <h2>🟢 Пользователи онлайн</h2>
+        <div id="onlineList" class="online-list"></div>
+      </div>
+
+      <!-- Донат -->
+      <div id="donate" class="tab-content">
+        <iframe src="donate.html" style="width:100%; height:600px; border:none;"></iframe>
+      </div>
+    </main>
+  </div>
+
+  <!-- Модальное окно редактирования -->
+  <div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h3>Редактировать профиль</h3>
+      <label>Аватарка (URL .gif): <input type="text" id="avatarInput" placeholder="https://..." /></label>
+      <label>Баннер (URL .gif): <input type="text" id="bannerInput" placeholder="https://..." /></label>
+      <label>Цвет профиля: 
+        <input type="color" id="colorInput" value="#10a37f" />
+      </label>
+      <button id="saveProfileBtn">Сохранить</button>
+      <button id="closeModal">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
